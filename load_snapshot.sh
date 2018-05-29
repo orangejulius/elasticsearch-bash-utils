@@ -19,7 +19,8 @@ curl -XPOST "$cluster_url/_snapshot/$es_repo_name" -d "{
    \"bucket\": \"$s3_bucket\",
    \"read_only\": $read_only,
    \"base_path\" : \"$base_path\",
-   \"max_snapshot_bytes_per_sec\" : \"1000mb\"
+   \"max_snapshot_bytes_per_sec\" : \"1000mb\",
+   \"max_restore_bytes_per_sec\" : \"1000mb\"
  }
 }"
 
