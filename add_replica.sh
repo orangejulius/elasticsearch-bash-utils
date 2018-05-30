@@ -2,10 +2,13 @@
 
 set -eu
 
-echo "setting replica count to 1 on pelas index in $cluster_url"
+index_name="${index_name:-pelias}"
+replica_count="${replica_count:-1}"
 
-curl -XPUT "$cluster_url/pelias/_settings" -d '{
-	"index" : {
-		"number_of_replicas" : 1
-	}
-}'
+echo "setting replica count to $replica_count on $index_name index in $cluster_url"
+
+curl -XPUT "$cluster_url/$index_name/_settings" -d "{
+        \"index\" : {
+                \"number_of_replicas\" : $replica_count
+        }
+}"
