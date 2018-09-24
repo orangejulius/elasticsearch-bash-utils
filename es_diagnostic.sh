@@ -8,6 +8,8 @@ set -eu
 ## optionally: update the old_snapshot_name and new_snapshot_name variables from the output
 ## run again, or ideally (on a large monitor) use `watch -n1 bash es_diagnostic.sh`
 
+cluster_url="${cluster_url:-http://localhost:9200}"
+
 ## CONFIGURE SCRIPT HERE
 old_snapshot_name="pelias-2016.11.04-000804"
 new_snapshot_name="pelias-2016.10.21-185509"
