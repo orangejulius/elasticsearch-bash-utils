@@ -6,6 +6,7 @@
 
 set -euo pipefail
 
+cluster_url="${cluster_url:-http://localhost:9200}"
 base_path=${base_path:-elasticsearch}
 es_repo_name="pelias_snapshots"
 s3_bucket="${s3_bucket:-geocodeearth-mapzen-elasticsearch-snapshots}"

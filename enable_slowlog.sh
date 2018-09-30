@@ -1,6 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
+cluster_url="${cluster_url:-http://localhost:9200}"
 echo "enabling slowlog for searching and indexing on $cluster_url"
 
 curl -XPUT "$cluster_url/_cluster/settings" -d '{

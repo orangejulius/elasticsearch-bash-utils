@@ -1,7 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
-#echo "counting all types on $cluster_url"
+cluster_url="${cluster_url:-http://localhost:9200}"
+echo "counting all types on $cluster_url"
 
 # query for all source values with an aggregation
 # this requires fielddata to be loaded, which takes a bit of memory

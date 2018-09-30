@@ -2,6 +2,7 @@
 
 set -eu
 
+cluster_url="${cluster_url:-http://localhost:9200}"
 index_name="${index_name:-pelias}"
 replica_count="${replica_count:-1}"
 

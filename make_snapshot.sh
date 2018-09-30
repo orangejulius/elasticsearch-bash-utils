@@ -8,6 +8,7 @@ set -euo pipefail
 
 current_date=`date +"%Y.%m.%d-%H%M%S"`
 
+cluster_url="${cluster_url:-http://localhost:9200}"
 new_snapshot_name="${new_snapshot_name:-pelias-$current_date}"
 echo "creating $new_snapshot_name"
 
