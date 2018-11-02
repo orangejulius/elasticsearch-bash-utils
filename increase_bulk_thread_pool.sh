@@ -1,5 +1,5 @@
 #!/bin/bash
-se -eu
+set -eu
 
 cluster_url="${cluster_url:-http://localhost:9200}"
 echo "setting threadpool.bulk.queue_size to 500 on $cluster_url"
