@@ -12,7 +12,7 @@ curl -s "$cluster_url/_cat/indices/?pretty=1&v" | (for i in $(seq 1); do read -r
 
 # Shows counts of queries for each index
 echo -e "\n$index_name queries"
-curl -s "$cluster_url/$index_name/_stats?pretty=1&v" | grep query_total | head -1
+curl -s "$cluster_url/$index_name/_stats?pretty=1" | grep query_total | head -1
 
 ## Show information about each node, including master and router nodes
 echo -e "\nNODES"
