@@ -8,7 +8,7 @@ echo "counting all types on $cluster_url"
 # this requires fielddata to be loaded, which takes a bit of memory
 curl -s -XPOST "$cluster_url/pelias/_search?size=0" -d '{
   "aggs" : {
-    "types_count" : { "terms" : { "field" : "source" } }
+    "source_count" : { "terms" : { "field" : "source" } }
   }
 }'
 
@@ -17,7 +17,7 @@ curl -s -XPOST "$cluster_url/pelias/_search?size=0" -d '{
 # this requires fielddata to be loaded, which takes a bit of memory
 curl -s -XPOST "$cluster_url/pelias/_search?size=0" -d '{
   "aggs" : {
-    "types_count" : { "terms" : { "field" : "layer", "size": 20 } }
+    "layer_count" : { "terms" : { "field" : "layer", "size": 20 } }
   }
 }'
 
