@@ -14,7 +14,9 @@ new_snapshot_name="${new_snapshot_name:-pelias-2017.11.18-001123}"
 read_only="${read_only:-true}"
 
 # create bucket, only needs to be run once
-curl -XPOST "$cluster_url/_snapshot/$es_repo_name" -d "{
+curl -XPOST "$cluster_url/_snapshot/$es_repo_name" \
+  -H 'Content-Type: application/json' \
+  -d "{
  \"type\": \"s3\",
    \"settings\": {
    \"bucket\": \"$s3_bucket\",
@@ -26,7 +28,9 @@ curl -XPOST "$cluster_url/_snapshot/$es_repo_name" -d "{
 }"
 
 ## import new snapshot with name including timestamp
-curl -XPOST "$cluster_url/_snapshot/$es_repo_name/${new_snapshot_name}/_restore" -d "{
+curl -XPOST "$cluster_url/_snapshot/$es_repo_name/${new_snapshot_name}/_restore" \
+  -H 'Content-Type: application/json' \
+  -d "{
   \"indices\": \"pelias\",
   \"rename_pattern\": \"pelias\",
   \"rename_replacement\": \"$new_snapshot_name\"

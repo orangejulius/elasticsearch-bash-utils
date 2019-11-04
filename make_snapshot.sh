@@ -22,7 +22,9 @@ s3_bucket="${s3_bucket:-pelias-elasticsearch.nextzen.org}"
 
 # create Elasticsearch repository from settings
 set -x
-curl -XPOST "$cluster_url/_snapshot/$es_repo_name" -d "{
+curl -XPOST "$cluster_url/_snapshot/$es_repo_name" \
+  -H 'Content-Type: application/json' \
+  -d "{
  \"type\": \"s3\",
    \"settings\": {
    \"bucket\": \"$s3_bucket\",
@@ -32,7 +34,9 @@ curl -XPOST "$cluster_url/_snapshot/$es_repo_name" -d "{
 }"
 
 # create snapshot
-curl -XPUT "$cluster_url/_snapshot/$es_repo_name/$new_snapshot_name" -d '{
+curl -XPUT "$cluster_url/_snapshot/$es_repo_name/$new_snapshot_name" \
+  -H 'Content-Type: application/json' \
+  -d '{
   "indices": "pelias"
 }'
 

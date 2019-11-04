@@ -4,7 +4,9 @@ set -euo pipefail
 cluster_url="${cluster_url:-http://localhost:9200}"
 echo "enabling slowlog for searching and indexing on $cluster_url"
 
-curl -XPUT "$cluster_url/_cluster/settings" -d '{
+curl -XPUT "$cluster_url/_cluster/settings" \
+  -H 'Content-Type: application/json' \
+  -d '{
   "persistent": {
     "index.search.slowlog.threshold.query.warn": "10s",
     "index.search.slowlog.threshold.query.info": "5s",
